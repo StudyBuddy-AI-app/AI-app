@@ -2,10 +2,8 @@ from google import genai
 from .prompt_utils import build_system_prompt
 
 
-client = genai.Client()
-
-
 def generate_reply(mode: str, message: str, history: list) -> str:
+    client = genai.Client()
     system_prompt = build_system_prompt(mode)
 
     conversation_text = ""
@@ -26,7 +24,7 @@ Respond as the assistant.
 """
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-2.5-flash",
         contents=full_prompt
     )
 
